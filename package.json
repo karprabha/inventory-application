@@ -1,0 +1,39 @@
+{
+    "name": "inventory-application",
+    "version": "1.0.0",
+    "description": "",
+    "main": "bin/www.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "npm run prod",
+        "prod": "npm run scss:build && node ./bin/www",
+        "server:watch": "nodemon -e js,pug ./bin/www",
+        "scss:build": "sass src/public/styles:src/public/styles",
+        "scss:watch": "sass --watch src/public/styles:src/public/styles",
+        "dev": "set \"BROWSER=none\" && start chrome http://localhost:3000 -incognito && SET DEBUG=inventory-application:* && npm run server:watch"
+    },
+    "keywords": [],
+    "author": "Prabhakar Yadav",
+    "license": "ISC",
+    "devDependencies": {
+        "dotenv": "^16.3.1",
+        "eslint": "^7.32.0 || ^8.2.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-import": "^2.25.2",
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.3",
+        "sass": "^1.67.0"
+    },
+    "dependencies": {
+        "debug": "^4.3.4",
+        "express": "^4.18.2",
+        "express-async-handler": "^1.2.0",
+        "express-validator": "^7.0.1",
+        "http-errors": "^2.0.0",
+        "mongoose": "^7.5.2",
+        "morgan": "^1.10.0",
+        "pug": "^3.0.2"
+    }
+}
