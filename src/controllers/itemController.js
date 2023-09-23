@@ -4,15 +4,42 @@ import Item from "../models/item.js";
 import Category from "../models/category.js";
 
 export const index = expressAsyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Site Home Page");
+    const [numItems, numCategories] = await Promise.all([
+        Item.countDocuments({}).exec(),
+        Category.countDocuments({}).exec(),
+    ]);
+
+    res.render("index", {
+        title: "Inventory",
+        item_count: numItems,
+        category_count: numCategories,
+    });
 });
 
 export const item_list = expressAsyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Item list");
+    const allItems = await Item.find({}, "name category")
+        .sort({ name: 1 })
+        .populate("category")
+        .exec();
+
+    res.render("item_list", { title: "Item List", item_list: allItems });
 });
 
+// eslint-disable-next-line consistent-return
 export const item_detail = expressAsyncHandler(async (req, res, next) => {
-    res.send(`NOT IMPLEMENTED: Item Detail: ${req.params.id}`);
+    const item = await Item.findById(req.params.id).populate("category").exec();
+
+    if (item === null) {
+        const err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
+    }
+
+    res.render("item_detail", {
+        title: item.name,
+        // eslint-disable-next-line object-shorthand
+        item: item,
+    });
 });
 
 export const item_create_get = expressAsyncHandler(async (req, res, next) => {
