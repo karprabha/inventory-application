@@ -20,7 +20,7 @@ router.get("/item", item_controller.item_update_get);
 
 router.post("/item", item_controller.item_update_post);
 
-router.get("/item/:Id", item_controller.item_detail);
+router.get("/item/:id", item_controller.item_detail);
 
 router.get("/items", item_controller.item_list);
 
@@ -38,7 +38,7 @@ router.get("/category", category_controller.category_update_get);
 
 router.post("/category", category_controller.category_update_post);
 
-router.get("/category/:Id", category_controller.category_detail);
+router.get("/category/:id", category_controller.category_detail);
 
 router.get("/categories", category_controller.category_list);
 
