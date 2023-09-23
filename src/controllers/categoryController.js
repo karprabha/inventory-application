@@ -1,3 +1,6 @@
+/* eslint-disable no-else-return */
+/* eslint-disable no-useless-return */
+/* eslint-disable consistent-return */
 /* eslint-disable object-shorthand */
 /* eslint-disable camelcase */
 import expressAsyncHandler from "express-async-handler";
@@ -16,7 +19,6 @@ export const category_list = expressAsyncHandler(async (req, res, next) => {
     });
 });
 
-// eslint-disable-next-line consistent-return
 export const category_detail = expressAsyncHandler(async (req, res, next) => {
     const [category, itemsInCategory] = await Promise.all([
         Category.findById(req.params.id).exec(),
@@ -68,9 +70,7 @@ export const category_create_post = [
                 category: category,
                 errors: errors.array(),
             });
-            // eslint-disable-next-line no-useless-return
             return;
-            // eslint-disable-next-line no-else-return
         } else {
             const categoryExists = await Category.findOne({
                 name: req.body.name,
@@ -120,9 +120,7 @@ export const category_delete_post = expressAsyncHandler(
                 category: category,
                 category_items: itemsInCategory,
             });
-            // eslint-disable-next-line no-useless-return
             return;
-            // eslint-disable-next-line no-else-return
         } else {
             await Category.findByIdAndRemove(req.body.id);
             res.redirect("/inventory/categories");
@@ -176,9 +174,7 @@ export const category_update_post = [
                 category: category,
                 errors: errors.array(),
             });
-            // eslint-disable-next-line no-useless-return
             return;
-            // eslint-disable-next-line no-else-return
         } else {
             await Category.findByIdAndUpdate(req.params.id, category);
             res.redirect(category.url);
