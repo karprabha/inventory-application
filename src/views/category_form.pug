@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= title
+
+    form(action="" method="post")
+        label(for="name")
+        input(type='text' placeholder='Fruit, Vegetable etc.' name='name' value=(undefined===category ? '' : category.name) required='true')
+        label(for="description")
+        input(type='text' placeholder='A wide variety of farm-fresh vegetables to choose from.' name='description' value=(undefined===category ? '' : category.description) required='true')
+        button(type="submit") Submit
+
+    if errors
+        ul
+            for error in errors
+                li!= error.msg
