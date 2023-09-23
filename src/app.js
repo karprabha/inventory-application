@@ -3,9 +3,15 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import createError from "http-errors";
+import mongoose from "mongoose";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { config } from "dotenv";
+import databaseConfig from "./config/database.js";
 
 import indexRouter from "./routes/index.js";
 import inventoryRouter from "./routes/inventory.js";
+
+config();
 
 const app = express();
 // eslint-disable-next-line no-underscore-dangle
@@ -15,6 +21,19 @@ const __dirname = path.dirname(__filename);
 
 app.set("view engine", "pug");
 app.set("views", `${__dirname}/views`);
+
+mongoose.set("strictQuery", false);
+const env = process.env.NODE_ENV || "development";
+const dbConfig = databaseConfig[env];
+
+try {
+    await mongoose.connect(dbConfig.url, dbConfig.options);
+    // eslint-disable-next-line no-console
+    console.log("Connected to MongoDB");
+} catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("MongoDB connection error:", err);
+}
 
 app.use(logger("dev"));
 app.use(express.json());
