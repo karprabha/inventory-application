@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= title
+    p #{category.description}
+
+    h4 Items
+    dl
+        each item in category_items
+            dt
+                a(href=item.url) #{item.name}
+            dd #{item.description}
+        else
+            p This Category has no Items.
