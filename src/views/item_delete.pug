@@ -7,5 +7,8 @@ block content
     p #[strong Price:] $#{item.price}
     p #[strong Stock:] #{item.numberInStock}
 
-    a(href=item.url+'/delete') Delete Item
-    a(href=item.url+'/update') Update Item
+    p Do you really want to delete this Item?
+
+    form(method='POST' action='')
+        input(type='hidden' name='id' required='true', value=item._id)
+        button(type="submit") Delete

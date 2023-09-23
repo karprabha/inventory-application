@@ -4,9 +4,9 @@ block content
     h1= title
 
     form(action="" method="post")
-        label(for="name")
+        label(for="name") Name:
         input(type='text' placeholder='Fruit, Vegetable etc.' name='name' value=(undefined===category ? '' : category.name) required='true')
-        label(for="description")
+        label(for="description") Description:
         input(type='text' placeholder='A wide variety of farm-fresh vegetables to choose from.' name='description' value=(undefined===category ? '' : category.description) required='true')
         button(type="submit") Submit
 
