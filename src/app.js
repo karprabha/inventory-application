@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import createError from "http-errors";
 
 import indexRouter from "./routes/index.js";
+import inventoryRouter from "./routes/inventory.js";
 
 const app = express();
 // eslint-disable-next-line no-underscore-dangle
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
+app.use("/inventory", inventoryRouter);
 
 app.use((req, res, next) => {
     next(createError(404));

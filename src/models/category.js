@@ -13,7 +13,7 @@ const CategorySchema = new Schema({
 // eslint-disable-next-line func-names
 CategorySchema.virtual("url").get(function () {
     // eslint-disable-next-line no-underscore-dangle
-    return `/category/${this._id}`;
+    return `/inventory/category/${this._id}`;
 });
 
 const Category = model("Category", CategorySchema);

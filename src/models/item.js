@@ -16,7 +16,7 @@ const ItemSchema = new Schema({
 // eslint-disable-next-line func-names
 ItemSchema.virtual("url").get(function () {
     // eslint-disable-next-line no-underscore-dangle
-    return `/item/${this._id}`;
+    return `/inventory/item/${this._id}`;
 });
 
 const Item = model("Item", ItemSchema);
