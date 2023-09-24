@@ -247,8 +247,6 @@ export const item_update_post = [
             });
         } else {
             if (imageBuffer !== null) {
-                console.log(imageBuffer);
-                console.log(contentType);
                 const getItem = await Item.findById(req.params.id);
 
                 const image = await Image({
