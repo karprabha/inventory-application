@@ -1,37 +1,39 @@
 extends layout
 
 block content
-    h1= title
+    .item-form
+        h1= title
 
-    form(action="" method="post" enctype="multipart/form-data")
-        label(for="name") Name:
-        input(type='text' placeholder='Apple, Carrot etc.' name='name' value=(undefined===item ? '' : item.name) required='true')
-        label(for="description") Description:
-        input(type='text' placeholder='Nutritious and crunchy carrots, great for salads and snacks.' name='description' value=(undefined===item ? '' : item.description) required='true')
-        label(for="category") Category:
-        select(type='select' placeholder='Select category' name='category' required='true')
-            - categories.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
-            for category in categories
-                if item
-                    option(value=category._id selected=(category._id.toString() === item.category._id.toString() ? 'selected' : false)) #{category.name}
-                else
-                    option(value=category._id) #{category.name}
-        label(for="price") Price:
-        input(type='number' name='price' value=(undefined===item ? 0 : item.price) required='true')
-        label(for="numberInStock") Stock:
-        input(type='number' name='numberInStock' value=(undefined===item ? 0 : item.numberInStock) required='true')
+        form(action="" method="post" enctype="multipart/form-data" class="container form")
+            if errors
+                ul
+                    for error in errors
+                        li(class="error")= error.msg
+            if imgError
+                ul
+                    li(class="error")= imgError
 
-        if item && item.image
-            img(src='/inventory/image/' + item.image._id, alt='Product Image')
+            label(for="name" class="label") Name:
+            input(type='text' placeholder='Apple, Carrot etc.' name='name' value=(undefined===item ? '' : item.name) required='true' class="input-field")
+            label(for="description" class="label") Description:
+            input(type='text' placeholder='Nutritious and crunchy carrots, great for salads and snacks.' name='description' value=(undefined===item ? '' : item.description) required='true' class="input-field")
+            label(for="category" class="label") Category:
+            select(type='select' placeholder='Select category' name='category' required='true' class="input-field")
+                - categories.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+                for category in categories
+                    if item
+                        option(value=category._id selected=(category._id.toString() === item.category._id.toString() ? 'selected' : false)) #{category.name}
+                    else
+                        option(value=category._id) #{category.name}
+            label(for="price" class="label") Price:
+            input(type='number' name='price' value=(undefined===item ? 0 : item.price) required='true' class="input-field")
+            label(for="numberInStock" class="label") Stock:
+            input(type='number' name='numberInStock' value=(undefined===item ? 0 : item.numberInStock) required='true' class="input-field")
 
-        label(for="image") Image:
-        input(type='file' name='image')
-        button(type="submit") Submit
+            if item && item.image
+                .image-preview
+                    img(src='/inventory/image/' + item.image._id, alt='Product Image')
 
-    if errors
-        ul
-            for error in errors
-                li!= error.msg
-    if imgError
-        ul
-            li!= imgError
+            label(for="image" class="label") Image:
+            input(type='file' name='image' class="input-field")
+            button(type="submit" class="button") Submit

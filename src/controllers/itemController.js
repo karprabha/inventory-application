@@ -227,6 +227,8 @@ export const item_update_post = [
             imgError = "Unsupported image format.";
         }
 
+        const getDBItem = await Item.findById(req.params.id);
+
         const item = await Item({
             name: req.body.name,
             description: req.body.description,
@@ -234,6 +236,7 @@ export const item_update_post = [
             price: req.body.price,
             numberInStock: req.body.numberInStock,
             _id: req.params.id,
+            image: getDBItem.image,
         });
 
         if (!errors.isEmpty() || imgError !== null) {
@@ -248,15 +251,13 @@ export const item_update_post = [
             });
         } else {
             if (imageBuffer !== null) {
-                const getItem = await Item.findById(req.params.id);
-
                 const image = await Image({
                     data: imageBuffer,
                     contentType: contentType,
-                    _id: getItem.image._id,
+                    _id: getDBItem.image._id,
                 });
 
-                await Image.findByIdAndUpdate(getItem.image._id, image);
+                await Image.findByIdAndUpdate(getDBItem.image._id, image);
             }
 
             await Item.findByIdAndUpdate(req.params.id, item);
