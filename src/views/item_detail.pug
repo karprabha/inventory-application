@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1= title
+    img(src='/inventory/image/' + item.image._id, alt="")
     p #{item.description}
     a(href=item.category.url) #{item.category.name}
     p #[strong Price:] $#{item.price}

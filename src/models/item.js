@@ -9,6 +9,7 @@ const ItemSchema = new Schema({
         maxLength: 200,
     },
     category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
+    image: { type: Schema.Types.ObjectId, ref: "Image", required: true },
     price: { type: Number, required: true, min: 0, max: 1000 },
     numberInStock: { type: Number, required: true, min: 0, max: 10000 },
 });

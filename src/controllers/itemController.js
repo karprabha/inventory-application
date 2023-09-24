@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-else-return */
 /* eslint-disable no-useless-return */
 /* eslint-disable consistent-return */
@@ -5,8 +6,13 @@
 /* eslint-disable camelcase */
 import expressAsyncHandler from "express-async-handler";
 import { body, validationResult } from "express-validator";
+import multer from "multer";
+
 import Item from "../models/item.js";
+import Image from "../models/image.js";
 import Category from "../models/category.js";
+
+const upload = multer();
 
 export const index = expressAsyncHandler(async (req, res, next) => {
     const [numItems, numCategories] = await Promise.all([
@@ -55,6 +61,8 @@ export const item_create_get = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const item_create_post = [
+    upload.single("image"),
+
     body("name", "Item name must contain at least 3 characters")
         .trim()
         .isLength({ min: 3 })
@@ -79,6 +87,25 @@ export const item_create_post = [
     expressAsyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
 
+        const imageBuffer = req.file ? req.file.buffer : null;
+        const contentType = req.file ? req.file.mimetype : null;
+        const imageSize = req.file ? req.file.size : null;
+
+        const maxImageSize = 40 * 1024;
+        const allowedImageTypes = ["image/jpeg", "image/png", "image/gif"];
+
+        let imgError = null;
+
+        if (imageBuffer === null) {
+            imgError = "No image uploaded.";
+        } else if (contentType === null) {
+            imgError = "Image content type is missing.";
+        } else if (imageSize > maxImageSize) {
+            imgError = "Image size exceeds the limit (40KB).";
+        } else if (!allowedImageTypes.includes(contentType)) {
+            imgError = "Unsupported image format.";
+        }
+
         const item = await Item({
             name: req.body.name,
             description: req.body.description,
@@ -87,16 +114,23 @@ export const item_create_post = [
             numberInStock: req.body.numberInStock,
         });
 
-        if (!errors.isEmpty()) {
+        if (!errors.isEmpty() || imgError !== null) {
             const allCategories = await Category.find().exec();
-
             res.render("item_form", {
                 title: "Create Item",
                 categories: allCategories,
                 item: item,
                 errors: errors.array(),
+                imgError: imgError,
             });
         } else {
+            const image = await Image.create({
+                data: imageBuffer,
+                contentType: contentType,
+            });
+
+            item.set("image", image._id);
+
             await item.save();
             res.redirect(item.url);
         }
@@ -117,13 +151,19 @@ export const item_delete_get = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const item_delete_post = expressAsyncHandler(async (req, res, next) => {
+    const item = await Item.findById(req.body.id);
+    await Image.findByIdAndRemove(item.image._id);
     await Item.findByIdAndRemove(req.body.id);
+
     res.redirect("/inventory/items");
 });
 
 export const item_update_get = expressAsyncHandler(async (req, res, next) => {
     const [item, allCategories] = await Promise.all([
-        Item.findById(req.params.id).populate("category").exec(),
+        Item.findById(req.params.id)
+            .populate("category")
+            .populate("image")
+            .exec(),
         Category.find().exec(),
     ]);
 
@@ -141,6 +181,8 @@ export const item_update_get = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const item_update_post = [
+    upload.single("image"),
+
     body("name", "Item name must contain at least 3 characters")
         .trim()
         .isLength({ min: 3 })
@@ -165,6 +207,25 @@ export const item_update_post = [
     expressAsyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
 
+        const imageBuffer = req.file ? req.file.buffer : null;
+        const contentType = req.file ? req.file.mimetype : null;
+        const imageSize = req.file ? req.file.size : null;
+
+        const maxImageSize = 40 * 1024;
+        const allowedImageTypes = ["image/jpeg", "image/png", "image/gif"];
+
+        let imgError = null;
+
+        if (imageBuffer === null) {
+            imgError = null;
+        } else if (contentType === null) {
+            imgError = "Image content type is missing.";
+        } else if (imageSize > maxImageSize) {
+            imgError = "Image size exceeds the limit (40KB).";
+        } else if (!allowedImageTypes.includes(contentType)) {
+            imgError = "Unsupported image format.";
+        }
+
         const item = await Item({
             name: req.body.name,
             description: req.body.description,
@@ -174,7 +235,7 @@ export const item_update_post = [
             _id: req.params.id,
         });
 
-        if (!errors.isEmpty()) {
+        if (!errors.isEmpty() || imgError !== null) {
             const allCategories = await Category.find().exec();
 
             res.render("item_form", {
@@ -182,8 +243,21 @@ export const item_update_post = [
                 categories: allCategories,
                 item: item,
                 errors: errors.array(),
+                imgError: imgError,
             });
         } else {
+            if (imageBuffer !== null) {
+                const getItem = await Item.findById(req.params.id);
+
+                const image = await Image({
+                    data: imageBuffer,
+                    contentType: contentType,
+                    _id: getItem.image._id,
+                });
+
+                await Image.findByIdAndUpdate(getItem.image._id, image);
+            }
+
             await Item.findByIdAndUpdate(req.params.id, item);
             res.redirect(item.url);
         }

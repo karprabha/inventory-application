@@ -2,6 +2,7 @@
 import { Router } from "express";
 import * as item_controller from "../controllers/itemController.js";
 import * as category_controller from "../controllers/categoryController.js";
+import * as image_controller from "../controllers/imageController.js";
 
 const router = Router();
 
@@ -41,5 +42,9 @@ router.post("/category/:id/update", category_controller.category_update_post);
 router.get("/category/:id", category_controller.category_detail);
 
 router.get("/categories", category_controller.category_list);
+
+/// IMAGE ROUTES ///
+
+router.get("/image/:id", image_controller.image_detail);
 
 export default router;

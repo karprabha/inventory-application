@@ -3,7 +3,7 @@ extends layout
 block content
     h1= title
 
-    form(action="" method="post")
+    form(action="" method="post" enctype="multipart/form-data")
         label(for="name") Name:
         input(type='text' placeholder='Apple, Carrot etc.' name='name' value=(undefined===item ? '' : item.name) required='true')
         label(for="description") Description:
@@ -20,9 +20,18 @@ block content
         input(type='number' name='price' value=(undefined===item ? 0 : item.price) required='true')
         label(for="numberInStock") Stock:
         input(type='number' name='numberInStock' value=(undefined===item ? 0 : item.numberInStock) required='true')
+
+        if item && item.image
+            img(src='/inventory/image/' + item.image._id, alt='Product Image')
+
+        label(for="image") Image:
+        input(type='file' name='image')
         button(type="submit") Submit
 
     if errors
         ul
             for error in errors
                 li!= error.msg
+    if imgError
+        ul
+            li!= imgError
