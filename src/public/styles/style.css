@@ -164,6 +164,92 @@ header ul {
   background-color: #fff;
 }
 
+.item-delete {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 450px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.item-delete .item-details-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 30%;
+  height: 30vh;
+  min-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.item-delete .item-details-image img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+.item-delete h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.item-delete p.description {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.item-delete a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: bold;
+}
+.item-delete p.price,
+.item-delete p.stock {
+  font-size: 18px;
+}
+.item-delete p.price {
+  margin-top: 10px;
+}
+.item-delete p.stock {
+  margin-bottom: 20px;
+}
+.item-delete .delete-form {
+  margin-top: 20px;
+}
+.item-delete .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.item-delete .btn-container button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.item-delete .btn-container button:hover {
+  background-color: #2980b9;
+}
+.item-delete .btn-container .delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.item-delete .btn-container .delete-button:hover {
+  background-color: #c82333;
+}
+
 main {
   flex: 1;
   padding: 20px 20px;
