@@ -21,7 +21,7 @@ export const index = expressAsyncHandler(async (req, res, next) => {
     ]);
 
     res.render("index", {
-        title: "Inventory",
+        title: "InstaGrocery",
         item_count: numItems,
         category_count: numCategories,
     });

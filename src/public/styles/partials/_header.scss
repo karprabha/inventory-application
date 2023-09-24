@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: black;
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+    }
+}
