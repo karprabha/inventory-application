@@ -3,6 +3,7 @@
 
 import mongoose from "mongoose";
 import Item from "./models/item.js";
+import Image from "./models/image.js";
 import Category from "./models/category.js";
 
 const items = [];
@@ -12,6 +13,23 @@ const userArgs = process.argv.slice(2);
 const mongoDB = userArgs[0];
 
 mongoose.set("strictQuery", false);
+
+function generateDummyImage() {
+    const width = 100;
+    const height = 100;
+    const channels = 4;
+    const imageSize = width * height * channels;
+    const dummyImage = Buffer.alloc(imageSize);
+
+    for (let i = 0; i < imageSize; i += channels) {
+        dummyImage.writeUInt8(255, i);
+        dummyImage.writeUInt8(255, i + 1);
+        dummyImage.writeUInt8(255, i + 2);
+        dummyImage.writeUInt8(255, i + 3);
+    }
+
+    return dummyImage;
+}
 
 async function categoryCreate(index, name, description) {
     const category = new Category({ name, description });
@@ -28,12 +46,21 @@ async function itemCreate(
     price,
     numberInStock
 ) {
+    const dummyImage = new Image({
+        data: generateDummyImage(),
+        contentType: "image/jpeg",
+    });
+
+    await dummyImage.save();
+
     const itemdetail = {
         name,
         description,
         category,
         price,
         numberInStock,
+        // eslint-disable-next-line no-underscore-dangle
+        image: dummyImage._id,
     };
 
     const item = new Item(itemdetail);
