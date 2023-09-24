@@ -1,0 +1,52 @@
+.item-list {
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+
+            .item-title {
+                font-weight: bold;
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #333;
+            }
+
+            .item-price {
+                font-size: 16px;
+            }
+
+            .img-container {
+                width: 100%;
+                height: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 10px;
+                overflow: hidden;
+                border-radius: 10px;
+                position: relative;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+}

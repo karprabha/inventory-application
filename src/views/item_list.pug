@@ -1,12 +1,17 @@
 extends layout
 
 block content
-    h1= title
-    ul
-        each item in item_list
-            li
-                a(href=item.url) #{item.name}
-                | (#{item.category.name})
-
-        else
-            li There are no items.
+    .item-list
+        h1= title
+        .card-container
+            each item in item_list
+                .card
+                    a(href=`/inventory/item/${item._id}`)
+                        .img-container
+                            img(src='/inventory/image/' + item.image._id, alt=item.name)
+                        span.item-title #{item.name}
+                    span.item-price #[strong Price:] $#{item.price}
+                    .stocks-container
+                        span #[strong Stock:] #{item.numberInStock}
+            else
+                span There are no items.

@@ -28,9 +28,10 @@ export const index = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const item_list = expressAsyncHandler(async (req, res, next) => {
-    const allItems = await Item.find({}, "name category")
+    const allItems = await Item.find({})
         .sort({ name: 1 })
         .populate("category")
+        .populate("image")
         .exec();
 
     res.render("item_list", { title: "Item List", item_list: allItems });
