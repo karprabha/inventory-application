@@ -2,7 +2,9 @@ extends layout
 
 block content
     .item-list
-        h1= title
+        .breadcrumb-navigation
+            a.breadcrumb-link(href="/") Home
+            span.breadcrumb-separator &gt; Items
         .card-container
             each item in item_list
                 .card

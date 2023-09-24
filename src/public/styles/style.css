@@ -62,9 +62,112 @@ header ul {
   max-height: 100%;
 }
 
+.item-detail .item-details {
+  display: flex;
+  gap: 20px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+.item-detail .item-details .item-details-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 30%;
+  height: 50vh;
+  min-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+.item-detail .item-details .item-details-image img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+.item-detail .item-details .item-details-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+.item-detail .item-details .item-details-info h3 {
+  font-size: 24px;
+}
+.item-detail .item-details .item-details-info .item-details-stock {
+  font-size: 16px;
+  color: #808080;
+  margin-bottom: 10px;
+}
+.item-detail .item-details .item-details-info .item-details-price {
+  font-size: 18px;
+}
+.item-detail .item-details .item-details-info .item-details-description {
+  margin: 10px 0;
+}
+.item-detail .item-details .item-details-info .item-details-description p {
+  font-size: 16px;
+}
+.item-detail .item-details .item-details-info .item-details-category {
+  margin-bottom: auto;
+  font-size: 16px;
+  color: #3498db;
+  text-decoration: none;
+}
+.item-detail .item-details .item-details-info .btn-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.item-detail .item-details .item-details-info .btn-container button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+.item-detail .item-details .item-details-info .btn-container button:hover {
+  background-color: #2980b9;
+}
+
+.breadcrumb-navigation {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.breadcrumb-navigation .breadcrumb-link {
+  text-decoration: none;
+  color: #333;
+  margin-right: 10px;
+}
+.breadcrumb-navigation .breadcrumb-link:hover {
+  text-decoration: underline;
+}
+.breadcrumb-navigation .breadcrumb-separator {
+  color: #777;
+  margin: 0 5px;
+}
+.breadcrumb-navigation .category-dropdown {
+  border: 1px solid #ccc;
+  padding: 5px;
+  background-color: #fff;
+}
+
 main {
   flex: 1;
-  padding: 10px 20px;
+  padding: 20px 20px;
+  padding-top: 8px;
   box-sizing: border-box;
 }
 
