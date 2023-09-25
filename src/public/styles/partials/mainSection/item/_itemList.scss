@@ -47,6 +47,11 @@
                     max-height: 100%;
                 }
             }
+            &:hover {
+                a {
+                    color: #3498db;
+                }
+            }
         }
     }
 }

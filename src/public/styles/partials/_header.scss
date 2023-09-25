@@ -5,6 +5,14 @@ header {
     padding: 10px 20px;
     background-color: black;
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    box-sizing: border-box;
+    color: #fff;
+
     h1 {
         font-size: 1.5rem;
     }
@@ -17,6 +25,14 @@ header {
     ul {
         display: flex;
         list-style: none;
-        gap: 10px;
+        gap: 20px;
+
+        li {
+            a {
+                &:hover {
+                    color: #e74c3c;
+                }
+            }
+        }
     }
 }
