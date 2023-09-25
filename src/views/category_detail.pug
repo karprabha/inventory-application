@@ -1,17 +1,33 @@
 extends layout
 
 block content
-    h1= title
-    p #{category.description}
+    .category-detail
+        .breadcrumb-navigation
+            a.breadcrumb-link(href="/") Home
+            span.breadcrumb-separator &gt;
+            a.breadcrumb-link(href="/inventory/categories") Categories
+            span.breadcrumb-separator &gt; #{category.name}
 
-    h4 Items
-    dl
-        each item in category_items
-            dt
-                a(href=item.url) #{item.name}
-            dd #{item.description}
-        else
-            p This Category has no Items.
+        .category-details
+            h1= title
+            p #{category.description}
 
-    a(href=category.url+'/delete') Delete Category
-    a(href=category.url+'/update') Update Category
+            .btn-container
+                a(href=category.url+'/delete')
+                    button(type="button") Delete Category
+                a(href=category.url+'/update')
+                    button(type="button") Update Category
+
+        h3 Items
+        .card-container
+            each item in category_items
+                .card
+                    .item-details-image
+                        a(href=item.url)
+                            img(src='/inventory/image/' + item.image._id, alt=item.name)
+                    .item-details-info
+                        a(href=item.url) #{item.name}
+                        .item-details-description
+                            p #{item.description}
+            else
+                p This Category has no Items.
