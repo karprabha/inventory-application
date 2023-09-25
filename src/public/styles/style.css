@@ -405,6 +405,50 @@ header ul {
   font-size: 16px;
 }
 
+.category-form .container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.category-form .container.form {
+  text-align: center;
+}
+.category-form .container.form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.category-form .container.form .input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.category-form .container.form .button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.category-form .container.form .error {
+  list-style: none;
+  color: #f44336;
+  font-size: 14px;
+  margin-top: 5px;
+  background-color: #ffe5e5;
+  padding: 5px 10px;
+  border: 1px solid #ffcccc;
+  border-radius: 5px;
+}
+
 .breadcrumb-navigation {
   background-color: #f5f5f5;
   padding: 10px;

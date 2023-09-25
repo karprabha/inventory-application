@@ -1,16 +1,18 @@
 extends layout
 
 block content
-    h1= title
+    .category-form
+        h1= title
 
-    form(action="" method="post")
-        label(for="name") Name:
-        input(type='text' placeholder='Fruit, Vegetable etc.' name='name' value=(undefined===category ? '' : category.name) required='true')
-        label(for="description") Description:
-        input(type='text' placeholder='A wide variety of farm-fresh vegetables to choose from.' name='description' value=(undefined===category ? '' : category.description) required='true')
-        button(type="submit") Submit
+        form(action="" method="post" class="container form")
+            if errors
+                ul
+                    for error in errors
+                        li(class="error")= error.msg
 
-    if errors
-        ul
-            for error in errors
-                li!= error.msg
+            label(for="name" class="label") Name:
+            input(type='text' placeholder='Fruit, Vegetable etc.' name='name' value=(undefined===category ? '' : category.name) required='true' class="input-field")
+            label(for="description" class="label") Description:
+            input(type='text' placeholder='A wide variety of farm-fresh vegetables to choose from.' name='description' value=(undefined===category ? '' : category.description) required='true' class="input-field")
+
+            button(type="submit" class="button") Submit
