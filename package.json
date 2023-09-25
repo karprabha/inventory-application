@@ -11,12 +11,14 @@
         "server:watch": "nodemon -e js,pug ./bin/www",
         "scss:build": "sass src/public/styles:src/public/styles",
         "scss:watch": "sass --watch src/public/styles:src/public/styles",
-        "dev": "set \"BROWSER=none\" && start chrome http://localhost:3000 -incognito && SET DEBUG=inventory-application:* && npm run server:watch"
+        "dev": "set \"BROWSER=none\" && start chrome http://localhost:3000 -incognito && SET DEBUG=inventory-application:* && npm run server:watch",
+        "architecture": "depcruise --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg"
     },
     "keywords": [],
     "author": "Prabhakar Yadav",
     "license": "ISC",
     "devDependencies": {
+        "dependency-cruiser": "^14.0.0",
         "dotenv": "^16.3.1",
         "eslint": "^7.32.0 || ^8.2.0",
         "eslint-config-airbnb-base": "^15.0.0",
