@@ -74,6 +74,28 @@ header ul li a:hover {
 .item-list .card-container .card:hover a {
   color: #3498db;
 }
+.item-list .create-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 10;
+  box-sizing: border-box;
+  color: #fff;
+}
+.item-list .create-button button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+.item-list .create-button button:hover {
+  background-color: #2980b9;
+}
 
 .item-detail .item-details {
   display: flex;
@@ -326,6 +348,28 @@ header ul li a:hover {
 .category-list .card-container .card .category-details-description p {
   font-size: 14px;
   color: #666;
+}
+.category-list .create-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 10;
+  box-sizing: border-box;
+  color: #fff;
+}
+.category-list .create-button button {
+  background-color: #3498db;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 20px 0;
+}
+.category-list .create-button button:hover {
+  background-color: #2980b9;
 }
 
 .category-detail .category-details {

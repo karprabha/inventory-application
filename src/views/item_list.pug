@@ -17,3 +17,7 @@ block content
                         span #[strong Stock:] #{item.numberInStock}
             else
                 span There are no items.
+
+        .create-button
+            a(href="/inventory/item/create")
+                button(type="button") Create Item

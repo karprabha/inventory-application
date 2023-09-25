@@ -33,4 +33,29 @@
             }
         }
     }
+
+    .create-button {
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 10;
+        box-sizing: border-box;
+        color: #fff;
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 20px 0;
+
+            &:hover {
+                background-color: #2980b9;
+            }
+        }
+    }
 }
