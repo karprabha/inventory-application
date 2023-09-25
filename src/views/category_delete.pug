@@ -1,20 +1,33 @@
 extends layout
 
 block content
-    h1= title
-    p #{category.description}
+    .category-delete
+        h1= title
+        .category-details
+            h3 #{category.name}
+            p.description #{category.description}
 
+        if category_items.length
+            p #[strong Delete the following items before attempting to delete this Category.]
+            .card-container
+                each item in category_items
+                    .card
+                        .item-details-image
+                            a(href=item.url)
+                                img(src='/inventory/image/' + item.image._id, alt=item.name)
+                        .item-details-info
+                            a(href=item.url) #{item.name}
+                            .item-details-description
+                                p #{item.description}
+                .btn-container
+                    a(href='/inventory/category/' + category._id)
+                        button(type="button") Go Back
+        else
+            p Do you really want to delete this Category?
 
-    if category_items.length
-        p #[strong Delete the following items before attempting to delete this Category.]
-        dl
-            each item in category_items
-                dt
-                    a(href=item.url) #{item.name}
-                dd #{item.description}
-    else
-        p Do you really want to delete this Category?
-
-        form(method='POST' action='')
-            input(type='hidden' name='id' required='true', value=category._id)
-            button(type="submit") Delete
+            form.delete-form(method='POST' action='')
+                input(type='hidden' name='id' required='true', value=category._id)
+                .btn-container
+                    a(href='/inventory/category/' + category._id)
+                        button(type="button") Go Back
+                    button.delete-button(type="submit") Delete

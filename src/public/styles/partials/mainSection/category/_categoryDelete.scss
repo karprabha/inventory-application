@@ -1,0 +1,138 @@
+$primaryColor: #3498db;
+$dangerColor: #dc3545;
+$dangerColorHover: #c82333;
+
+.category-delete {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 450px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    p.description {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: $primaryColor;
+        font-weight: bold;
+    }
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 5px 0;
+        overflow: auto;
+        max-height: 500px;
+
+        .card {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: white;
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .item-details-image {
+                flex: 1;
+                max-width: 100px;
+                min-width: 100px;
+                height: 80px;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                a {
+                    height: inherit;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+                }
+            }
+
+            .item-details-info {
+                flex: 3;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                min-width: 300px;
+
+                a {
+                    font-size: 18px;
+                    font-weight: bold;
+
+                    &:hover {
+                        color: #3498db;
+                    }
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .delete-form {
+        margin-top: 20px;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #2980b9;
+            }
+        }
+
+        .delete-button {
+            background-color: $dangerColor;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+
+            &:hover {
+                background-color: $dangerColorHover;
+            }
+        }
+    }
+}

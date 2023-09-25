@@ -90,7 +90,10 @@ export const category_delete_get = expressAsyncHandler(
     async (req, res, next) => {
         const [category, itemsInCategory] = await Promise.all([
             Category.findById(req.params.id).exec(),
-            Item.find({ category: req.params.id }, "name description").exec(),
+            Item.find(
+                { category: req.params.id },
+                "name description image"
+            ).exec(),
         ]);
 
         if (category === null) {
