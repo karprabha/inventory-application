@@ -14,6 +14,9 @@
         "dev": "set \"BROWSER=none\" && start chrome http://localhost:3000 -incognito && SET DEBUG=inventory-application:* && npm run server:watch",
         "architecture": "depcruise --include-only \"^src\" --output-type dot src | dot -T svg > dependencygraph.svg"
     },
+    "engines": {
+        "node": ">=14.20.1"
+    },
     "keywords": [],
     "author": "Prabhakar Yadav",
     "license": "ISC",
