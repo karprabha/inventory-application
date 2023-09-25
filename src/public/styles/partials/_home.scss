@@ -1,0 +1,117 @@
+.home {
+    flex: 1;
+    background-color: mediumspringgreen;
+    height: 100%;
+    width: 100%;
+    margin-top: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .img-container-top {
+        align-self: flex-start;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        max-width: 460px;
+        min-width: 300px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .img-container-bot {
+        align-self: flex-end;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        max-width: 420px;
+        min-width: 300px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .hero-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-width: 300px;
+        max-width: 700px;
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        z-index: 100;
+        box-sizing: border-box;
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+
+            button {
+                background-color: #3498db;
+                color: #fff;
+                font-size: 14px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                margin: 20px 0;
+
+                &:hover {
+                    background-color: #2980b9;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .home {
+        .img-container-top {
+            width: max(300px, 50vw);
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .img-container-bot {
+            width: max(300px, 50vw);
+            margin-left: auto;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .hero-section {
+            position: static;
+            margin: auto;
+            transform: translate(0%, 0%);
+        }
+    }
+}

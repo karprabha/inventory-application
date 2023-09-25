@@ -1,14 +1,28 @@
-extends layout
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/styles/style.css')
+        title= title
+    body
+        include ./partials/_header
 
-block content
-    h1= title
-    ul
-        li
-            a(href="/inventory/items") #[strong Items:] !{item_count}
-        li
-            a(href="/inventory/categories") #[strong Categories:] !{category_count}
-        hr
-        li
-            a(href="/inventory/item/create") #[strong Create Item]
-        li
-            a(href="/inventory/category/create") #[strong Create Category]
+        .home
+            .img-container-top
+                img(src="/assets/images/bg-img-1.png" alt="bg-img-1")
+
+            .hero-section
+                h1 Groceries at Your Fingertips, Instantly!
+                p Welcome to InstaGrocery, where quality groceries are just a tap away. Shop fresh, shop fast, and experience the future of convenience with our user-friendly app.
+
+                .btn-container
+                    a(href="/inventory/items")
+                        button(type="button") #[strong View Items]
+                    a(href="/inventory/categories")
+                        button(type="button") #[strong View Categories]
+
+            .img-container-bot
+                img(src="/assets/images/bg-img-2.png" alt="bg-img-2")
+
+        include ./partials/_footer
