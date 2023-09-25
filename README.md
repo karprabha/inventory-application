@@ -1,6 +1,6 @@
 # InstaGrocery - Your Online Grocery Inventory
 
-#### Visit InstaGrocery: [InstaGrocery Online](https://crafthaven.netlify.app/)
+#### Visit InstaGrocery: [InstaGrocery Online](https://instagrocery.onrender.com)
 
 ![homescreen-img](./docs/images/1.png)
 ![gamescreen-img](./docs/images/2.png)
