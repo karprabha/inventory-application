@@ -260,6 +260,10 @@ header ul li a:hover {
   background-color: #c82333;
 }
 
+.item-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 .item-form .container {
   max-width: 400px;
   margin: 0 auto;
@@ -462,6 +466,10 @@ header ul li a:hover {
   font-size: 16px;
 }
 
+.category-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 .category-form .container {
   max-width: 400px;
   margin: 0 auto;

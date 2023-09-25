@@ -2,6 +2,11 @@ $primaryColor: #007bff;
 $errorColor: #dc3545;
 
 .category-form {
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
     .container {
         max-width: 400px;
         margin: 0 auto;
