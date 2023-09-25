@@ -1,11 +1,17 @@
 extends layout
 
 block content
-    h1= title
-    ul
-        each category in category_list
-            li
-                a(href=category.url) #{category.name}
+    .category-list
+        .breadcrumb-navigation
+            a.breadcrumb-link(href="/") Home
+            span.breadcrumb-separator &gt; Categories
+        .card-container
+            each category in category_list
+                .card
+                    a(href=`/inventory/category/${category._id}`)
+                        span.category-title #{category.name}
 
-        else
-            li There are no categories.
+                    .category-details-description
+                        p #{category.description}
+            else
+                span There are no categories.

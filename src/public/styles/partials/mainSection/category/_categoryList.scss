@@ -1,0 +1,36 @@
+.category-list {
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+
+        .card {
+            background-color: white;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 10px;
+            a {
+                text-decoration: none;
+                span.category-title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #333;
+
+                    &:hover {
+                        color: #3498db;
+                    }
+                }
+            }
+
+            .category-details-description {
+                p {
+                    font-size: 14px;
+                    color: #666;
+                }
+            }
+        }
+    }
+}

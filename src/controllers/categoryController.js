@@ -9,9 +9,7 @@ import Category from "../models/category.js";
 import Item from "../models/item.js";
 
 export const category_list = expressAsyncHandler(async (req, res, next) => {
-    const allCategories = await Category.find({}, "name")
-        .sort({ name: 1 })
-        .exec();
+    const allCategories = await Category.find({}).sort({ name: 1 }).exec();
 
     res.render("category_list", {
         title: "Category List",
