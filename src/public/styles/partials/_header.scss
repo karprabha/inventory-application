@@ -3,7 +3,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: black;
+    background-color: #005c57;
 
     position: fixed;
     top: 0;
@@ -30,7 +30,7 @@ header {
         li {
             a {
                 &:hover {
-                    color: #e74c3c;
+                    color: #f0f0f0;
                 }
             }
         }

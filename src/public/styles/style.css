@@ -3,7 +3,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: black;
+  background-color: #005c57;
   position: fixed;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@ header ul {
   gap: 20px;
 }
 header ul li a:hover {
-  color: #e74c3c;
+  color: #f0f0f0;
 }
 
 .item-list .card-container {
@@ -83,7 +83,7 @@ header ul li a:hover {
   color: #fff;
 }
 .item-list .create-button button {
-  background-color: #3498db;
+  background-color: #007bff;
   color: #fff;
   font-size: 14px;
   padding: 10px 20px;
@@ -94,7 +94,7 @@ header ul li a:hover {
   margin: 20px 0;
 }
 .item-list .create-button button:hover {
-  background-color: #2980b9;
+  background-color: #0056b3;
 }
 
 .item-detail .item-details {
@@ -362,7 +362,7 @@ header ul li a:hover {
   color: #fff;
 }
 .category-list .create-button button {
-  background-color: #3498db;
+  background-color: #007bff;
   color: #fff;
   font-size: 14px;
   padding: 10px 20px;
@@ -373,7 +373,7 @@ header ul li a:hover {
   margin: 20px 0;
 }
 .category-list .create-button button:hover {
-  background-color: #2980b9;
+  background-color: #0056b3;
 }
 
 .category-detail .category-details {
@@ -668,10 +668,11 @@ main {
 
 .home {
   flex: 1;
-  background-color: mediumspringgreen;
+  background-color: #006b66;
   height: 100%;
   width: 100%;
   margin-top: 50px;
+  color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -731,8 +732,8 @@ main {
   gap: 20px;
 }
 .home .hero-section .btn-container button {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #f0f0f0;
+  color: #333;
   font-size: 14px;
   padding: 10px 20px;
   border: none;
@@ -742,7 +743,7 @@ main {
   margin: 20px 0;
 }
 .home .hero-section .btn-container button:hover {
-  background-color: #2980b9;
+  background-color: #d0d0d0;
 }
 
 @media screen and (max-width: 900px) {
@@ -768,7 +769,7 @@ main {
   }
 }
 footer {
-  background-color: black;
+  background-color: #005c57;
   color: white;
   text-align: center;
   padding: 5px 20px;

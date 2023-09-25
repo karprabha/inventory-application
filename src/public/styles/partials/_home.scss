@@ -1,9 +1,10 @@
 .home {
     flex: 1;
-    background-color: mediumspringgreen;
+    background-color: #006b66;
     height: 100%;
     width: 100%;
     margin-top: 50px;
+    color: white;
 
     display: flex;
     flex-wrap: wrap;
@@ -71,8 +72,8 @@
             gap: 20px;
 
             button {
-                background-color: #3498db;
-                color: #fff;
+                background-color: #f0f0f0;
+                color: #333;
                 font-size: 14px;
                 padding: 10px 20px;
                 border: none;
@@ -82,7 +83,7 @@
                 margin: 20px 0;
 
                 &:hover {
-                    background-color: #2980b9;
+                    background-color: #d0d0d0;
                 }
             }
         }
